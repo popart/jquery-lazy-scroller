@@ -1,0 +1,32 @@
+<script src="LazyScroller.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+<script type="text/javascript">
+var l = null
+$(function() {
+   var items = [] 
+   for (var i=0; i<101; i++) {
+       items[i] = {val: i};
+   }
+
+   l = LazyScroller({
+       data: items
+       , scrollContainer: $('#testBox')
+       , template: $('#tile')
+       , tileHeight: 102
+       , magicNumber: 40
+       , numCols: 2
+       , beforeLoad: function() {console.log('wahaha')}
+   });
+});
+</script>
+<script id="tile" type="text/x-jquery-tmpl">
+    <div style="height: 100px;width:300px; border:1px solid black; float:left" class="lazy-tile">
+        ${val}
+    </div>
+</script>
+
+<html>
+    <div id="testBox" style="height:600px;overflow:auto;border-top:20px solid red; width:704px">
+    </div>
+</html>
